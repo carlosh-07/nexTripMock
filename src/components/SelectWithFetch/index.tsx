@@ -36,9 +36,14 @@ const SelectWithFetch: React.FC<SelectWithFetchProps> = ({
 
   if (selections.length) {
     return (
-      <div>
+      <div data-testid="selectWithFetch">
         <label htmlFor={selectionField}>Choose a direction:</label>
-        <select name={selectionField} id={selectionField} onChange={onChange}>
+        <select
+          data-testid="selectionInput"
+          name={selectionField}
+          id={selectionField}
+          onChange={onChange}
+        >
           <option value="">Select {selectionField}</option>
           {selections.map((selection) => {
             return (
