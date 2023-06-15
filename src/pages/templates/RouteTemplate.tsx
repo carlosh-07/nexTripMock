@@ -61,7 +61,7 @@ const RouteTemplate: React.FC<RouteTemplateProps> = ({
               stop: selectedStopId,
             },
           },
-          `route/${selectedRouteId}/${selectedDirectionId}/${selectedStopId}`
+          `/route/${selectedRouteId}/${selectedDirectionId}/${selectedStopId}`
         );
       } catch (e) {
         console.error(e);
