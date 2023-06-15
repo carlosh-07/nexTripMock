@@ -1,26 +1,45 @@
 import { SelectWithFetch } from "@/components/SelectWithFetch";
 import { StopTable } from "@/components/StopTable";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 
-const RouteTemplate = ({ routes, initialStopData }) => {
+interface RouteTemplateProps {
+  routes: RouteSelection[];
+  initialStopData?: StopData;
+}
+
+const RouteTemplate: React.FC<RouteTemplateProps> = ({
+  routes,
+  initialStopData,
+}) => {
   const [selectedRouteId, setSelectedRouteId] = useState<string>();
   const [selectedDirectionId, setSelectedDirectionId] = useState<string>();
   const [selectedStopId, setSelectedStopId] = useState<string>();
 
-  const [stopData, setStopData] = useState(initialStopData);
+  const [stopData, setStopData] = useState<StopData | undefined>(
+    initialStopData
+  );
 
-  const handleSelectedRoute = useCallback((event) => {
-    setSelectedRouteId(event.target.value);
-  }, []);
+  const handleSelectedRoute = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      setSelectedRouteId(event.target.value);
+    },
+    []
+  );
 
-  const handleSelectedDirection = useCallback((event) => {
-    setSelectedDirectionId(event.target.value);
-  }, []);
+  const handleSelectedDirection = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      setSelectedDirectionId(event.target.value);
+    },
+    []
+  );
 
-  const handleSelectedStop = useCallback((event) => {
-    setSelectedStopId(event.target.value);
-  }, []);
+  const handleSelectedStop = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      setSelectedStopId(event.target.value);
+    },
+    []
+  );
 
   const router = useRouter();
 

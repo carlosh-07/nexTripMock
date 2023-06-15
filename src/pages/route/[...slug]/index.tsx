@@ -2,13 +2,22 @@ import RouteTemplate from "@/pages/templates/RouteTemplate";
 import { GetServerSideProps } from "next";
 import React from "react";
 
-const RouteWithParams = ({ routes, initialStopData }) => {
+interface RouteWithParamsProps {
+  routes: RouteSelection[];
+  initialStopData: StopData;
+}
+
+const RouteWithParams: React.FC<RouteWithParamsProps> = ({
+  routes,
+  initialStopData,
+}) => {
   return <RouteTemplate routes={routes} initialStopData={initialStopData} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const apisToFetch = ["https://svc.metrotransit.org/nextripv2/routes"];
 
+  //@ts-ignore
   const [routeId, directionId, stopId] = ctx.query?.slug ?? [];
 
   if (routeId && directionId && stopId) {

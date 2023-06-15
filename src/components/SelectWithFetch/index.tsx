@@ -3,7 +3,7 @@ import { selectionMap } from "./constants";
 
 interface SelectWithFetchProps {
   routeId?: string;
-  onChange: any;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
   selectionField: "stop" | "direction";
   directionId?: string;
 }
@@ -14,7 +14,9 @@ const SelectWithFetch: React.FC<SelectWithFetchProps> = ({
   selectionField,
   directionId,
 }) => {
-  const [selections, setSelections] = useState([]);
+  const [selections, setSelections] = useState<
+    DirectionSelections[] | StopSelections[]
+  >([]);
 
   useEffect(() => {
     const fetchData = async () => {

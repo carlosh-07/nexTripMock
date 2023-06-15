@@ -1,6 +1,10 @@
 import React from "react";
 
-const StopTable = ({ stopData }) => {
+interface StopTableProps {
+  stopData?: StopData;
+}
+
+const StopTable: React.FC<StopTableProps> = ({ stopData }) => {
   if (!stopData) {
     return null;
   }

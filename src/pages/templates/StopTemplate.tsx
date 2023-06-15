@@ -2,11 +2,23 @@ import { StopTable } from "@/components/StopTable";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 
-const StopTemplate = ({ stopNumber, initialStopData }) => {
-  const [stopData, setStopData] = useState(initialStopData);
-  const [userInputForStop, setUserInputForStop] = useState();
+interface StopTemplateProps {
+  stopNumber?: string;
+  initialStopData?: StopData;
+}
 
-  const handleStopInputChange = (event) => {
+const StopTemplate: React.FC<StopTemplateProps> = ({
+  stopNumber,
+  initialStopData,
+}) => {
+  const [stopData, setStopData] = useState<StopData | undefined>(
+    initialStopData
+  );
+  const [userInputForStop, setUserInputForStop] = useState("");
+
+  const handleStopInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { value } = event.target;
     setUserInputForStop(value.replace(/\D/g, ""));
   };

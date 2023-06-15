@@ -2,13 +2,17 @@ import StopTemplate from "@/pages/templates/StopTemplate";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
-const Stop = ({ stopData }) => {
+interface StopProps {
+  stopData: StopData;
+}
+
+const Stop: React.FC<StopProps> = ({ stopData }) => {
   const router = useRouter();
   const {
     query: { id },
   } = router;
 
-  return <StopTemplate initialStopData={stopData} stopNumber={id} />;
+  return <StopTemplate initialStopData={stopData} stopNumber={id as string} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -16,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     `https://svc.metrotransit.org/nextripv2/${ctx.params.id}`
   );
 
-  const stopData = await response.json();
+  const stopData: StopData = await response.json();
 
   return { props: { stopData } };
 };

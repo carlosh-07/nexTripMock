@@ -1,4 +1,4 @@
-export const mockStopData = {
+export const mockStopData: StopData = {
   stops: [
     {
       stop_id: 56829,
