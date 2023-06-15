@@ -34,7 +34,7 @@ const StopTemplate: React.FC<StopTemplateProps> = ({
       );
       const data = await response.json();
       setStopData(data);
-      router.push(`${userInputForStop}`, undefined, { shallow: true });
+      router.push(`/stop/${userInputForStop}`);
     } catch (e) {
       console.error(e);
     }
@@ -58,6 +58,7 @@ const StopTemplate: React.FC<StopTemplateProps> = ({
       </div>
       {stopNumber && (
         <div className={styles.header}>
+          <h1>{stopData?.stops[0].description}</h1>
           <h2>Stop # {stopNumber}</h2>
         </div>
       )}
