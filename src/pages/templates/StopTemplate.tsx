@@ -55,6 +55,7 @@ const StopTemplate: React.FC<StopTemplateProps> = ({
             inputMode="numeric"
             placeholder="Enter stop number"
             className={styles.inputFont}
+            name="stopInput"
           />
           <button className={styles.inputFont} onClick={onStopInfoSubmit}>
             Get Stop Info
