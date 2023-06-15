@@ -14,6 +14,7 @@ const StopTable: React.FC<StopTableProps> = ({ stopData }) => {
 
   return (
     <table className={styles.table} data-testid="stopTable">
+      <caption>Next Trip Departures</caption>
       <thead data-testid="tableHeader">
         <tr>
           <th className={styles.tableHeader}>Route</th>
@@ -34,6 +35,7 @@ const StopTable: React.FC<StopTableProps> = ({ stopData }) => {
               <td className={styles.tableData} data-testid="departureTimeCol">
                 {departure.actual && (
                   <img
+                    alt="Icon indicating this time is in realTime and accurate"
                     data-testid="actualTimeIcon"
                     src="https://www.metrotransit.org/img/svg/broadcast-blue.svg"
                   />
