@@ -2,6 +2,8 @@ import { StopTable } from "@/components/StopTable";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 
+import styles from "../../app/page.module.css";
+
 interface StopTemplateProps {
   stopNumber?: string;
   initialStopData?: StopData;
@@ -40,19 +42,24 @@ const StopTemplate: React.FC<StopTemplateProps> = ({
 
   return (
     <div>
-      <input
-        type="text"
-        value={userInputForStop}
-        onChange={handleStopInputChange}
-        pattern="[0-9]*"
-        inputMode="numeric"
-        placeholder="Enter stop number"
-      />
-      <button onClick={onStopInfoSubmit}>Get Stop Info</button>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          value={userInputForStop}
+          onChange={handleStopInputChange}
+          pattern="[0-9]*"
+          inputMode="numeric"
+          placeholder="Enter stop number"
+          className={styles.inputFont}
+        />
+        <button className={styles.inputFont} onClick={onStopInfoSubmit}>
+          Get Stop Info
+        </button>
+      </div>
       {stopNumber && (
-        <>
-          <h1>Stop # {stopNumber}</h1>
-        </>
+        <div className={styles.header}>
+          <h2>Stop # {stopNumber}</h2>
+        </div>
       )}
       <StopTable stopData={stopData} />
     </div>

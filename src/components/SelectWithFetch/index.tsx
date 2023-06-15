@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { selectionMap } from "./constants";
+import styles from "../../app/page.module.css";
 
 interface SelectWithFetchProps {
   routeId?: string;
@@ -38,13 +39,16 @@ const SelectWithFetch: React.FC<SelectWithFetchProps> = ({
 
   if (selections.length) {
     return (
-      <div data-testid="selectWithFetch">
-        <label htmlFor={selectionField}>Choose a direction:</label>
+      <>
+        <label className={styles.inputFont} htmlFor={selectionField}>
+          Choose a {selectionField}:
+        </label>
         <select
           data-testid="selectionInput"
           name={selectionField}
           id={selectionField}
           onChange={onChange}
+          className={styles.inputFont}
         >
           <option value="">Select {selectionField}</option>
           {selections.map((selection) => {
@@ -58,7 +62,7 @@ const SelectWithFetch: React.FC<SelectWithFetchProps> = ({
             );
           })}
         </select>
-      </div>
+      </>
     );
   } else return null;
 };

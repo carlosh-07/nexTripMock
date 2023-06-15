@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../app/page.module.css";
 
 interface StopTableProps {
   stopData?: StopData;
@@ -12,21 +13,25 @@ const StopTable: React.FC<StopTableProps> = ({ stopData }) => {
   const { departures } = stopData;
 
   return (
-    <table data-testid="stopTable">
+    <table className={styles.table} data-testid="stopTable">
       <thead data-testid="tableHeader">
         <tr>
-          <th>Route</th>
-          <th>Destination</th>
-          <th>Departure Time</th>
+          <th className={styles.tableHeader}>Route</th>
+          <th className={styles.tableHeader}>Destination</th>
+          <th className={styles.tableHeader}>Departure Time</th>
         </tr>
       </thead>
       <tbody>
         {departures?.map((departure, index) => {
           return (
             <tr data-testid={`tableRow`} key={index}>
-              <td data-testid="routeCol">{departure.route_short_name}</td>
-              <td data-testid="destinationCol">{departure.description}</td>
-              <td data-testid="departureTimeCol">
+              <td className={styles.tableData} data-testid="routeCol">
+                {departure.route_short_name}
+              </td>
+              <td className={styles.tableData} data-testid="destinationCol">
+                {departure.description}
+              </td>
+              <td className={styles.tableData} data-testid="departureTimeCol">
                 {departure.actual && (
                   <img
                     data-testid="actualTimeIcon"

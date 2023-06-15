@@ -3,6 +3,8 @@ import { StopTable } from "@/components/StopTable";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 
+import styles from "../../app/page.module.css";
+
 interface RouteTemplateProps {
   routes: RouteSelection[];
   initialStopData?: StopData;
@@ -72,28 +74,37 @@ const RouteTemplate: React.FC<RouteTemplateProps> = ({
 
   return (
     <div>
-      <label htmlFor="routes">Choose a route:</label>
-      <select onChange={handleSelectedRoute} name="routes" id="routes">
-        <option value="">Select route</option>
-        {routes.map((route) => {
-          return (
-            <option value={route.route_id} key={route.route_id}>
-              {route.route_label}
-            </option>
-          );
-        })}
-      </select>
-      <SelectWithFetch
-        routeId={selectedRouteId}
-        onChange={handleSelectedDirection}
-        selectionField="direction"
-      />
-      <SelectWithFetch
-        routeId={selectedRouteId}
-        directionId={selectedDirectionId}
-        onChange={handleSelectedStop}
-        selectionField="stop"
-      />
+      <div className={styles.inputSelect}>
+        <label className={styles.inputFont} htmlFor="routes">
+          Choose a route:
+        </label>
+        <select
+          className={styles.inputFont}
+          onChange={handleSelectedRoute}
+          name="routes"
+          id="routes"
+        >
+          <option value="">Select route</option>
+          {routes.map((route) => {
+            return (
+              <option value={route.route_id} key={route.route_id}>
+                {route.route_label}
+              </option>
+            );
+          })}
+        </select>
+        <SelectWithFetch
+          routeId={selectedRouteId}
+          onChange={handleSelectedDirection}
+          selectionField="direction"
+        />
+        <SelectWithFetch
+          routeId={selectedRouteId}
+          directionId={selectedDirectionId}
+          onChange={handleSelectedStop}
+          selectionField="stop"
+        />
+      </div>
       {stopData && <StopTable stopData={stopData} />}
     </div>
   );
