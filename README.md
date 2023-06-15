@@ -16,7 +16,8 @@ This is a mock of the nexTrip page.
 - React
 - Jest
 - @testing-library/react
-- Vanilla Fetch
+- Cypress
+- Vanilla js fetch
 - CSS Modules
 - Typescript
 
@@ -32,6 +33,20 @@ npm run dev
 
 ```bash
 npm run test
+```
+
+### Cypress e2e
+
+⚠️ Set to test against http://localhost:3000 ⚠️
+
+```bash
+npm run cypress
+```
+
+To open cypress
+
+```bash
+npm run cypress:open
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
