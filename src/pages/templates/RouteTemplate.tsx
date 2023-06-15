@@ -117,7 +117,7 @@ const RouteTemplate: React.FC<RouteTemplateProps> = ({
         {stopData?.departures.length && (
           <>
             <div className={styles.header}>
-              <h1>{stopData?.stops[0].description}</h1>
+              <h1>{stopData?.stops?.[0]?.description}</h1>
               <h2>Stop # {stopData?.stops[0].stop_id}</h2>
             </div>
             <StopTable stopData={stopData} />
