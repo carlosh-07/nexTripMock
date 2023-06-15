@@ -1,9 +1,11 @@
+import "../../app/globals.css";
 import { SelectWithFetch } from "@/components/SelectWithFetch";
 import { StopTable } from "@/components/StopTable";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 
 import styles from "../../app/page.module.css";
+import Navbar from "@/components/Navbar";
 
 interface RouteTemplateProps {
   routes: RouteSelection[];
@@ -77,40 +79,52 @@ const RouteTemplate: React.FC<RouteTemplateProps> = ({
   }, [initialStopData]);
 
   return (
-    <div>
-      <div className={styles.inputSelect}>
-        <label className={styles.inputFont} htmlFor="routes">
-          Choose a route:
-        </label>
-        <select
-          className={styles.inputFont}
-          onChange={handleSelectedRoute}
-          name="routes"
-          id="routes"
-        >
-          <option value="">Select route</option>
-          {routes.map((route) => {
-            return (
-              <option value={route.route_id} key={route.route_id}>
-                {route.route_label}
-              </option>
-            );
-          })}
-        </select>
-        <SelectWithFetch
-          routeId={selectedRouteId}
-          onChange={handleSelectedDirection}
-          selectionField="direction"
-        />
-        <SelectWithFetch
-          routeId={selectedRouteId}
-          directionId={selectedDirectionId}
-          onChange={handleSelectedStop}
-          selectionField="stop"
-        />
+    <>
+      <Navbar />
+      <div>
+        <div className={styles.inputSelect}>
+          <label className={styles.inputFont} htmlFor="routes">
+            Choose a route:
+          </label>
+          <select
+            className={styles.inputFont}
+            onChange={handleSelectedRoute}
+            name="routes"
+            id="routes"
+          >
+            <option value="">Select route</option>
+            {routes.map((route) => {
+              return (
+                <option value={route.route_id} key={route.route_id}>
+                  {route.route_label}
+                </option>
+              );
+            })}
+          </select>
+          <SelectWithFetch
+            routeId={selectedRouteId}
+            onChange={handleSelectedDirection}
+            selectionField="direction"
+          />
+          <SelectWithFetch
+            routeId={selectedRouteId}
+            directionId={selectedDirectionId}
+            onChange={handleSelectedStop}
+            selectionField="stop"
+          />
+        </div>
+
+        {stopData?.departures.length && (
+          <>
+            <div className={styles.header}>
+              <h1>{stopData?.stops[0].description}</h1>
+              <h2>Stop # {stopData?.stops[0].stop_id}</h2>
+            </div>
+            <StopTable stopData={stopData} />
+          </>
+        )}
       </div>
-      {stopData && <StopTable stopData={stopData} />}
-    </div>
+    </>
   );
 };
 

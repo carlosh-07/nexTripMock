@@ -36,6 +36,32 @@
 
 }
 
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 28px;
+  height: 56px;
+  margin-bottom: 16px;
+}
+
+.leftNav {
+  display: flex;
+  background-color: #19418b;
+  color: white;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightNav {
+  display: flex;
+  background-color: #d22d2d;
+  color: white;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .fullLinkRight {
   display: flex;
   height: 100%;
@@ -58,6 +84,7 @@
   width: 75%;
   margin-right: auto;
   grid-template-columns: 75% auto;
+  margin-bottom: 12px;
 }
 
 .inputSelect {
@@ -78,6 +105,9 @@
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
 
   @media (max-width: 767px) {
     width: 100%;
