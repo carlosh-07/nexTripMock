@@ -72,6 +72,10 @@ const RouteTemplate: React.FC<RouteTemplateProps> = ({
     }
   }, [selectedStopId]);
 
+  useEffect(() => {
+    setStopData(initialStopData);
+  }, [initialStopData]);
+
   return (
     <div>
       <div className={styles.inputSelect}>
