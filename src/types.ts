@@ -31,3 +31,9 @@ interface Stop {
   longitude: number;
   description: string;
 }
+
+interface RouteSelection {
+  route_id: string;
+  agency_id: number;
+  route_label: string;
+}
