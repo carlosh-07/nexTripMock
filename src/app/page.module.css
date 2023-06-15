@@ -19,6 +19,17 @@
   }
 }
 
+.floatText {
+  top: 12px;
+  width: 100%;
+  position: absolute;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+
 .fullLinkLeft {
   display: flex;
   height: 100%;
