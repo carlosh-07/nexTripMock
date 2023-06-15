@@ -15,7 +15,6 @@ const RouteTemplate = ({ routes, initialStopData }) => {
   }, []);
 
   const handleSelectedDirection = useCallback((event) => {
-    debugger;
     setSelectedDirectionId(event.target.value);
   }, []);
 
